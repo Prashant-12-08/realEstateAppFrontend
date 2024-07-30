@@ -51,8 +51,6 @@ function NewPostPage() {
     formData.set('price', Number(inputs.price));
     formData.set('bedroom', Number(inputs.bedroom));
     formData.set('bathroom', Number(inputs.bathroom));
-    formData.set(' latitude', Number(inputs.latitude));
-    formData.set('longitude', Number(inputs.longitude));
     formData.append('userId', currentUser._id);
     console.log(inputs);
 
@@ -165,7 +163,7 @@ function NewPostPage() {
             <div className={styles.item}>
               <label htmlFor="type">Type</label>
               <select name="type" className={styles.select}>
-                <option value="Rent" defaultChecked>
+                <option value="rent" defaultChecked>
                   Rent
                 </option>
                 <option value="Buy">Buy</option>

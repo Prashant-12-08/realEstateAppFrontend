@@ -4,11 +4,13 @@ import { useState } from 'react';
 import Style from './ImgSlider.module.css';
 
 const path = function (imgName, ext) {
+  console.log(imgName);
   return `/realEstateImage/user_post_images/${imgName}.${ext}`;
 };
 function ImgSlider({ images, setImageNumber, imageNum }) {
   //states of a component
 
+  console.log(images);
   // variable
   let totalImg = images.length;
 
@@ -59,6 +61,7 @@ function ImgSlider({ images, setImageNumber, imageNum }) {
         {images.map((img, index) => {
           if (index === 0) return null;
           if (index > 3) return;
+
           return (
             <img
               key={index}

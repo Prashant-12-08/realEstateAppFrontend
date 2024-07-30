@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Button } from '@chakra-ui/react';
 
@@ -7,7 +7,6 @@ import Btn from '../ReusableComponent/Button';
 import style from './ProfilePage.module.css';
 import ListCard from '../components/ListCard';
 import { UserLocalHost } from '../lib/UserLocalHost';
-import { useFetchState } from '../hooks/useFetchState';
 const limit = 10;
 
 function ProfilePage() {
@@ -16,6 +15,7 @@ function ProfilePage() {
   const [pageNum, setPageNum] = useState(1);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState('');
+  const navigate = useNavigate();
 
   // handleScrollingEvent
   function handleScrollingEvent() {
@@ -23,7 +23,7 @@ function ProfilePage() {
     console.log(scrollTop, scrollHeight, clientHeight);
     if (scrollHeight - clientHeight - scrollTop < 50) {
       console.log('load');
-      setPageNum((prev) => prev + 1);
+      // setPageNum((prev) => prev + 1);
     }
   }
 
@@ -40,6 +40,7 @@ function ProfilePage() {
       const data = await res.json();
       console.log(data);
       setCurrentUser({ _id: null });
+      navigate('/homePage');
       if (!res.ok) throw new Error(data.message);
     } catch (err) {
       alert(err.message);
@@ -51,13 +52,10 @@ function ProfilePage() {
       async function fetchingUserPost() {
         try {
           setLoading(true);
-          const res = await fetch(
-            `${UserLocalHost}/posts?page=${pageNum}&limt=${limit}`,
-            {
-              method: 'GET',
-              credentials: 'include',
-            }
-          );
+          const res = await fetch(`${UserLocalHost}/posts?page=${pageNum}`, {
+            method: 'GET',
+            credentials: 'include',
+          });
           const data = await res.json();
           if (res.ok === false) throw new Error(data.message);
           setLoading(false);
@@ -114,6 +112,7 @@ function ProfilePage() {
             </Link>
           </div>
           <ListCard posts={userPosts} loading={loading} err={err} />
+          <h1 style={{ fontSize: '20px' }}>No more data is present</h1>
         </div>
       </div>
       <div className={style.right}></div>

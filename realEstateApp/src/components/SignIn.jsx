@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import { useReducer } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import style from './SignIn.module.css';
@@ -63,6 +63,7 @@ function SignIn() {
 
       navigator('/homePage', { replace: true });
     } catch (err) {
+      alert(err);
       dispatch({ type: 'Error' });
     }
   }

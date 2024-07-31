@@ -42,7 +42,6 @@ function SearchBox() {
   const handleSubmitEvent = (e) => {
     e.preventDefault();
     let query = '';
-    console.log(state);
     query += `type=${state.type}`;
     state.minPrice !== null ? (query += `&price[gte]=${state.minPrice}`) : null;
     state.maxPrice !== null ? (query += `&price[lte]=${state.maxPrice}`) : null;

@@ -22,12 +22,11 @@ function AppNavBar() {
         const userData = await res.json();
         setCurrentUser(userData.data.user);
       } catch (err) {
-        console.warn(err, '🤬😡😠');
+        // alert(err.message);
       }
     }
     fetchUserData();
   }, [setCurrentUser]);
-  console.log(currentUser.avatar);
 
   return (
     <nav className={styles.nav}>

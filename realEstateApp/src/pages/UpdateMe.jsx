@@ -33,8 +33,6 @@ function SignIn() {
 
     // formatting the sumbit data into FormDaa
     const formData = new FormData(e.target);
-    console.log(formData.get('updatedemail'));
-    console.log(Object.fromEntries(formData));
 
     // getting the form data sending the in object form
 
@@ -50,13 +48,12 @@ function SignIn() {
       if (!res.ok) throw new Error(userData.message);
 
       dispatch({ type: 'Ready' });
-      console.log(userData);
 
       setCurrentUser(userData.data.newUser);
       // navigator('/homePage', { replace: true });
     } catch (err) {
       dispatch({ type: 'Error' });
-      alert(err.message);
+      console.log(err.message);
     }
   }
 
@@ -85,7 +82,7 @@ function SignIn() {
             />
 
             {state.isLoading && <p>Loading</p>}
-            {!state.isLoading && state.error && <p>Error</p>}
+            {!state.isLoading && state.error && <p>Image is not updated</p>}
             {!state.isLoading && (
               <button className={style.btn} type="text">
                 Update Me

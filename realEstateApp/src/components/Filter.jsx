@@ -47,14 +47,11 @@ function Filter({ handleSearchPost }) {
     try {
       const length = query.length;
       query = query.slice(0, length - 1);
-      console.log(query);
       const res = await fetch(`${PostLocalHost}?${query}`, {
         method: 'GET',
         credential: 'include',
       });
-      console.log(res);
       const data = await res.json();
-      console.log(data);
       if (res.ok === false) throw new Error(data.message);
       handleSearchPost(data.data.allPost);
       navigate(`?${query}`);

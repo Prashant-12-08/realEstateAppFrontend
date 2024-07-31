@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 import { ImgPath } from '../utils/ImgPath';
 function MapMarker({ item }) {
-  console.log(typeof item.latitude);
   return (
     <>
       {item.latitude && (

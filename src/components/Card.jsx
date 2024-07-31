@@ -12,7 +12,6 @@ function Card({ item }) {
     if (size > 1) {
       const filterimg = img.split('/');
       const imgExt = filterimg[filterimg.length - 1].split('.');
-      console.log(imgExt);
       imgId = imgExt[0];
       ext = imgExt[1];
     }

@@ -27,7 +27,6 @@ const ListPage = () => {
 
     const scrolled = inputEl.current.scrollTop;
     if (contentHeight - viewPortHeight - scrolled < 50) {
-      console.log('load');
       setPageNum((prev) => prev + 1);
     }
   }

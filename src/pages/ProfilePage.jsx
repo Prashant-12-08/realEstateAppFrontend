@@ -20,9 +20,7 @@ function ProfilePage() {
   // handleScrollingEvent
   function handleScrollingEvent() {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-    console.log(scrollTop, scrollHeight, clientHeight);
     if (scrollHeight - clientHeight - scrollTop < 50) {
-      console.log('load');
       // setPageNum((prev) => prev + 1);
     }
   }
@@ -38,7 +36,6 @@ function ProfilePage() {
         }),
       });
       const data = await res.json();
-      console.log(data);
       setCurrentUser({ _id: null });
       navigate('/homePage');
       if (!res.ok) throw new Error(data.message);
@@ -60,9 +57,7 @@ function ProfilePage() {
           if (res.ok === false) throw new Error(data.message);
           setLoading(false);
           setUserPost(data.data.posts.userPosts);
-          console.log(data);
         } catch (err) {
-          console.log(err);
           setErr(err.message);
         }
       }

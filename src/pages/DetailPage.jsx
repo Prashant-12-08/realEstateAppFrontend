@@ -21,7 +21,6 @@ function DetailPage() {
     }
     return imgId;
   });
-  console.log(details.images);
 
   return (
     <div className={style.detailPage}>

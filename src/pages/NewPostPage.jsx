@@ -34,7 +34,6 @@ function NewPostPage() {
   // handling the form submit event
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e.target);
     const formData = new FormData(e.target);
     images.forEach((img) => {
       formData.append('images', img);
@@ -52,7 +51,6 @@ function NewPostPage() {
     formData.set('bedroom', Number(inputs.bedroom));
     formData.set('bathroom', Number(inputs.bathroom));
     formData.append('userId', currentUser._id);
-    console.log(inputs);
 
     try {
       setFetchState({ type: 'Loading' });
@@ -72,7 +70,6 @@ function NewPostPage() {
     } catch (err) {
       setFetchState({ type: 'Error' });
       setError(err.message);
-      console.warn(err);
     }
   };
 

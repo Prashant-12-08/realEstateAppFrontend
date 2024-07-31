@@ -57,7 +57,6 @@ function SignIn() {
       if (!res.ok) throw new Error(userData.message);
 
       dispatch({ type: 'Ready' });
-      console.log(userData);
       setCurrentUser(userData.data.user);
 
       navigator('/homePage', { replace: true });

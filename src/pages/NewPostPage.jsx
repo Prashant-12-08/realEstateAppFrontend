@@ -62,7 +62,7 @@ function NewPostPage() {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.status);
+      if (!res.ok) throw new Error(data);
       setFetchState({ type: 'Ready' });
 
       //navigating the postdetail page so that we can access the id of post
@@ -323,6 +323,5 @@ export default NewPostPage;
 //   });
 //   navigate('/' + res.data.id);
 // } catch (err) {
-//   console.log(err);
 //   setError(err.message);
 // }

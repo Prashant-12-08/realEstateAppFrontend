@@ -3,9 +3,6 @@ import { useState } from 'react';
 
 import Style from './ImgSlider.module.css';
 
-const path = function (imgName, ext) {
-  return `/realEstateImage/user_post_images/${imgName}.${ext}`;
-};
 function ImgSlider({ images, setImageNumber, imageNum }) {
   //states of a component
 
@@ -33,7 +30,7 @@ function ImgSlider({ images, setImageNumber, imageNum }) {
             />
           </div>
           <div className={Style.imgSlider}>
-            <img src={`${path(images[imageNum], 'jpg')}`} alt="" />
+            <img src={`${images[imageNum]}`} alt="" />
           </div>
           <div className={Style.arrow}>
             <img
@@ -47,7 +44,7 @@ function ImgSlider({ images, setImageNumber, imageNum }) {
       )}
       <div className={Style.bigImg}>
         <img
-          src={`${path(images[0], 'jpg')}`}
+          src={`${images[0]}`}
           alt="No Image is there"
           onClick={() => setImageNumber(0)}
         />
@@ -63,7 +60,7 @@ function ImgSlider({ images, setImageNumber, imageNum }) {
           return (
             <img
               key={index}
-              src={`${path(img, 'jpg')}`}
+              src={`${img}`}
               // src={images[index]}
               alt="small images"
               onClick={() => setImageNumber(index)}

@@ -5,22 +5,11 @@ import { Link } from 'react-router-dom';
 import { ImgPath } from '../utils/ImgPath';
 
 function Card({ item }) {
-  const images = item.images.map((img) => {
-    let ext = 'jpg';
-    let imgId = img;
-    const size = img.split('/').length;
-    if (size > 1) {
-      const filterimg = img.split('/');
-      const imgExt = filterimg[filterimg.length - 1].split('.');
-      imgId = imgExt[0];
-      ext = imgExt[1];
-    }
-    return imgId;
-  });
+  const images = item.images;
   return (
     <div className={style.card}>
       <Link to={`/postDetail/${item._id}`} className={style.imgContainer}>
-        <img src={`${ImgPath(images[0], 'jpg')}`} />
+        <img src={`${images[0]}`} />
       </Link>
       <div className={style.textContainer}>
         <h2 className={style.title}>{item.title}</h2>

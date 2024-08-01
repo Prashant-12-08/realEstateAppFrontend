@@ -53,7 +53,6 @@ function SignIn() {
       // navigator('/homePage', { replace: true });
     } catch (err) {
       dispatch({ type: 'Error' });
-      console.log(err.message);
     }
   }
 

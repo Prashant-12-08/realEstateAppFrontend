@@ -40,7 +40,6 @@ function NewPostPage() {
     });
     // converting the hashmap data to object format
     const inputs = Object.fromEntries(formData);
-
     // converting string to number
     formData.set('income', Number(inputs.income));
     formData.set('restaurant', Number(inputs.restaurant));
@@ -50,8 +49,10 @@ function NewPostPage() {
     formData.set('price', Number(inputs.price));
     formData.set('bedroom', Number(inputs.bedroom));
     formData.set('bathroom', Number(inputs.bathroom));
+    formData.set('latitude', Number(inputs.latitude));
+    formData.set('longitude', Number(inputs.longitude));
     formData.append('userId', currentUser._id);
-
+    console.log(typeof Number(inputs.latitude));
     try {
       setFetchState({ type: 'Loading' });
       // 1) sending the data to the user
@@ -144,7 +145,7 @@ function NewPostPage() {
               <input
                 id="latitude"
                 name="latitude"
-                type="Number"
+                type="decimal"
                 className={styles.input}
               />
             </div>
@@ -153,7 +154,7 @@ function NewPostPage() {
               <input
                 id="longitude"
                 name="longitude"
-                type="Number"
+                type="decimal"
                 className={styles.input}
               />
             </div>
@@ -163,7 +164,7 @@ function NewPostPage() {
                 <option value="rent" defaultChecked>
                   Rent
                 </option>
-                <option value="Buy">Buy</option>
+                <option value="buy">Buy</option>
               </select>
             </div>
             <div className={styles.item}>

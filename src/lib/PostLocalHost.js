@@ -1,1 +1,2 @@
-export const PostLocalHost = 'api/v1/posts';
+export const PostLocalHost =
+  'https://realestateapi-rbhr.onrender.com/api/v1/posts';

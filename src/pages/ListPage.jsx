@@ -89,7 +89,9 @@ const ListPage = () => {
             // />
             <h3>Loading...</h3>
           ) : null}
-          {dataFetchingState.error ? <h1>{error}</h1> : null}
+          {dataFetchingState.error && searchPosts != 0 ? (
+            <h1>{error}</h1>
+          ) : null}
         </div>
       </div>
       <div className={style.mapContainer}>

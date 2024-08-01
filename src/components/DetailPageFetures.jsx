@@ -53,6 +53,7 @@ const buttons = [
 ];
 
 function DetailPageFetures({ postDetails, imageNum }) {
+  console.log(imageNum);
   featuresEl[0].desc = postDetails.utilities;
   featuresEl[1].desc = `Pet ${postDetails.pet}`;
   featuresEl[2].desc = `Must have ${postDetails.income}x the rent in total household  income`;
@@ -120,7 +121,7 @@ function DetailPageFetures({ postDetails, imageNum }) {
           <h5>Location</h5>
           <div
             className={style.mapContainer}
-            style={{ display: imageNum >= 0 ? 'none' : '' }}
+            style={{ display: imageNum === null ? '' : 'none' }}
           >
             <Map items={[postDetails]}></Map>
           </div>

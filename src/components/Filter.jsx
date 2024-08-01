@@ -10,8 +10,8 @@ const reducer = function (state, action) {
     case 'property':
       return { ...state, property: action.payload };
     case 'type':
-      state.type === 'buy' ? (state.type = 'rent') : (state.type = 'buy');
-      return { ...state };
+      // state.type === 'buy' ? (state.type = 'rent') : (state.type = 'buy');
+      return { ...state, type: action.payload };
     case 'minPrice':
       return { ...state, price: action.payload };
     case 'bedroom':
@@ -35,15 +35,20 @@ function Filter({ handleSearchPost }) {
     bedroom: null,
   });
 
+  console.log(state);
   //making the query string
   let query = '';
   Object.entries(state).forEach(([key, value]) => {
     if (value && key != 'price') query += `${key}=${value}&`;
     else if (key === 'price') query += `${key}[gte]=${value}&`;
   });
+  console.log('after render', Date.now());
 
   // handling the submit events
-  async function handleSumbit() {
+  async function handleSumbit(e) {
+    e.preventDefault();
+    console.log('before render', Date.now());
+    console.log(query);
     try {
       const length = query.length;
       query = query.slice(0, length - 1);
@@ -54,10 +59,12 @@ function Filter({ handleSearchPost }) {
       const data = await res.json();
       if (res.ok === false) throw new Error(data.message);
       handleSearchPost(data.data.allPost);
-      navigate(`?${query}`);
     } catch (err) {
       handleSearchPost([]);
+      console.log(err);
       // alert(err.message);
+    } finally {
+      navigate(`?${query}`);
     }
   }
 

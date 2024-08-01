@@ -54,8 +54,9 @@ function ProfilePage() {
             credentials: 'include',
           });
           const data = await res.json();
-          if (res.ok === false) throw new Error(data.message);
+          console.log(data);
           setLoading(false);
+          if (res.ok === false) throw new Error(data.message);
           setUserPost(data.data.posts.userPosts);
         } catch (err) {
           setErr(err.message);

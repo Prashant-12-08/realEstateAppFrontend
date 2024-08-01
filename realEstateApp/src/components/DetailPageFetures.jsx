@@ -120,7 +120,7 @@ function DetailPageFetures({ postDetails, imageNum }) {
           <h5>Location</h5>
           <div
             className={style.mapContainer}
-            style={{ display: imageNum ? 'none' : '' }}
+            style={{ display: imageNum >= 0 ? 'none' : '' }}
           >
             <Map items={[postDetails]}></Map>
           </div>

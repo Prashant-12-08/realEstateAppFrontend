@@ -5,12 +5,6 @@ import { Link } from 'react-router-dom';
 function Details({ postDetails, setImageNumber, imageNum }) {
   const { userId: user } = postDetails;
 
-  // defining the path of image
-  // const newImages = postDetails.images.map((img, index) => {
-  //   const path = img.split('public')[1];
-  //   return path;
-  // });
-
   return (
     <div className={style.details}>
       <div className={style.wrapper}>
@@ -36,7 +30,9 @@ function Details({ postDetails, setImageNumber, imageNum }) {
               <div className={style.user}>
                 <img
                   className={style.userImg}
-                  src={`/default/${user.avatar}`}
+                  src={`${user.avatar === 'user_default_img.jpg' ? '/' : ''}${
+                    user.avatar
+                  }`}
                   alt="avatar"
                 />
                 <p>{user.name}</p>

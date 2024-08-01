@@ -51,9 +51,9 @@ function AppNavBar() {
           </div>
         ) : (
           <>
-            <Link to="/signIn">Sign in</Link>
+            <Link to="/signIn">Sign Up</Link>
             <Link to="/login" className={styles.signUp}>
-              Sign up
+              Login
             </Link>
           </>
         )}
